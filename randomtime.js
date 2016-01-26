@@ -3,6 +3,7 @@ $(
 	{
 		var range=1;
 		var div=$("#result");
+		var result = [];
 		$("#rangeSelect").change(function(evt){
 			range=parseInt($(evt.currentTarget).val());
 			$("#refresh").click();
@@ -10,7 +11,7 @@ $(
 
 		$("#refresh").click(function  (evt) {
 			div.empty();
-			var result = [];
+			result=[];
 			for (var i = 0; i < 1000; i++)
 			{
 				generateRandomTime();
