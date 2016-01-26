@@ -4,7 +4,7 @@
 		var range=1;
 		var div=$("#result");
 		$("#rangeSelect").change(function(evt){
-
+			var newRange;
 		});
 
 		$("#refresh").click(function  (evt) {
