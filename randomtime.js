@@ -1,6 +1,11 @@
 (
 	function ()
 	{
+		var range=1;
+		var select=$("#rangeSelect").change(function(evt){
+			
+		});
+
 		var minute = ["00", "15", "30", "45"]
 		var result = [];
 		var generateRandomTime = function ()
