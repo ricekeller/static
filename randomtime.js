@@ -46,7 +46,7 @@ $(
 			}
 			var res = h + ":" + m + " " + suf;
 			result.push(res);
-			div.append("<p>"+res+"</p>");
+			div.append("<li>"+res+"</li>");
 		};
 		var getRandomInt = function (min, max)
 		{
