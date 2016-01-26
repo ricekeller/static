@@ -4,11 +4,13 @@ $(
 		var range=1;
 		var div=$("#result");
 		$("#rangeSelect").change(function(evt){
-
+			range=parseInt($(evt.currentTarget).val());
+			$("#refresh").click();
 		});
 
 		$("#refresh").click(function  (evt) {
 			div.empty();
+			var result = [];
 			for (var i = 0; i < 1000; i++)
 			{
 				generateRandomTime();
@@ -16,7 +18,6 @@ $(
 		});
 
 		var minute = ["00", "15", "30", "45"]
-		var result = [];
 		var generateRandomTime = function ()
 		{
 			var end;
