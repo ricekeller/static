@@ -2,7 +2,7 @@ $(
 	function ()
 	{
 		var range=1;
-		var div=$("#result");
+		var div=$("#results");
 		var result = [];
 		$("#rangeSelect").change(function(evt){
 			range=parseInt($(evt.currentTarget).val());
