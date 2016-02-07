@@ -1,7 +1,7 @@
 $(
   function()
   {
-    var audio=$("#audio");
+    var audio=$("#audio1");
     audio.play();
   }
 );
