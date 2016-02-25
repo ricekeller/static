@@ -30,6 +30,10 @@ $(
 			{
 				end=48;
 			}
+			else if(range===3)
+			{
+				end=36;
+			}
 			var t = getRandomInt(0, end);
 			var h = Math.floor(t / 4);
 			var m = minute[t - h * 4];
