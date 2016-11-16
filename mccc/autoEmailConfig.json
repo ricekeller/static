@@ -1,3 +1,4 @@
 {
-  "templateUrl":"https://raw.githubusercontent.com/ricekeller/static/gh-pages/mccc/doodleEmailTemplate.html"
+  "templateUrl":"https://raw.githubusercontent.com/ricekeller/static/gh-pages/mccc/doodleEmailTemplate.html",
+  "descriptionText":"大家好！\n\n这个周五（<<data_friday>>）6：30pm在MCCC教会将有团契晚餐。大人及12岁以上小孩实际费用为6.5元，5-11岁小孩3元，5岁以下小孩免费。请大家在***周四前***填写这个doodle，这样我好知道需要点多少人的分量。谢谢大家的配合！之后唱诗和分组聚会从7:30开始。周五晚上见！"
 }
