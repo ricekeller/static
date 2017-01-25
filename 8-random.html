@@ -37,7 +37,9 @@
 				cnt++;
 				count[cur]=cnt;
 
-				cur+=cnt.toString();
+				cnt=cnt.toString();
+				if(cnt.length===1) cnt="0"+cnt;
+				cur+=cnt;
 				result.push(cur);
 
 				div.append("<p>"+cur+"</p>");
