@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title>8 random</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<style type="text/css">
+	p{
+		margin:0;
+	}
+	</style>
+</head>
+	<body>
+		<div id="main">
+
+		</div>
+
+		<script type="text/javascript">
+		$(function () 
+		{
+			function getRandomIntInclusive(min, max) 
+			{
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			function getObjLength (obj) 
+			{
+				var l=0;
+				for(var key in obj)
+				{
+					if (obj.hasOwnProperty(key))
+					{
+						l++;
+					}
+				}
+				return l;
+			}
+			var conditionIDs=["LC","HC","LT","HT","LF","HF","LM","HM"];
+			var result=[];
+			var generated={};
+			var count={};
+			var div=$("#main").empty();
+			for(var i=1;i<=200;i++)
+			{
+				var cur=conditionIDs[getRandomIntInclusive(0,7)];
+				while(generated[cur] !== undefined)
+				{
+					cur=conditionIDs[getRandomIntInclusive(0,7)];
+				}
+				generated[cur]=cur;
+				if(getObjLength(generated)===8)
+				{
+					generated={};
+				}
+
+				var cnt=count[cur];
+				if(cnt==undefined)
+				{
+					cnt=0;
+				}
+				cnt++;
+				count[cur]=cnt;
+
+				cnt=cnt.toString();
+				if(cnt.length===1) cnt="0"+cnt;
+				cur+=cnt;
+				result.push(cur);
+
+				div.append("<p>"+cur+"</p>");
+			}
+
+			div.append("<br><br><br>Total Numbers:<br>");
+			for(var key in count)
+			{
+				div.append("<p>"+key+":"+count[key]+"</p>");
+			}
+		});
+		</script>
+	</body>
+</html>
