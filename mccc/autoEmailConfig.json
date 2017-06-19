@@ -2,7 +2,7 @@
   "templateUrl":"https://raw.githubusercontent.com/ricekeller/static/gh-pages/mccc/doodleEmailTemplate.html",
   "descriptionText":"大家好！\n\n这个周五（{{{dinner_date}}}）6：30pm在MCCC教会将有团契晚餐。大人及12岁以上小孩实际费用为6.5元，5-11岁小孩3元，5岁以下小孩免费。请大家在***周四前***填写这个doodle，这样我好知道需要点多少人的分量。谢谢大家的配合！之后唱诗和分组聚会从7:30开始。周五晚上见！",
   "emailSubject":"[MCCC]周五({{{dinner_date}}})团契晚餐6：30pm",
-  "allowedUser":["ricekeller@gmail.com","estelle.zrr@gmail.com"],
+  "allowedUser":["ricekeller@gmail.com","estelle.zrr@gmail.com","dkilam@hotmail.com"],
   "googleSpreadSheetId":"10CqzZYIgpn7kBxe4oQN0wRdPRwGjUihD--_kdMju5k0",
   "googleSpreadSheetDataRange":"A3:E54",
   "googleSpreadSheetColumnCount":5,
