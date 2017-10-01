@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Chat</title>
+		<script src="PlayerIOClient.development.js"></script>
+		<script type="text/javascript">
+			var global = {
+				connection: null,
+				users: {}
+			}
+
+			function start() {
+				var username = document.getElementById("namepicker").value
+				document.getElementById("messages").style.display = "block"
+				document.getElementById("input").style.display = "block"
+				document.getElementById("users").style.display = "block"
+				document.getElementById("pickname").style.display = "none"
+
+				// connect to PlayerIO
+				PlayerIO.authenticate("chat-test-37vjgtjxwkkojoupiwwyua", "public", { userId: username }, {}, function (client) {
+					addChatLine('notice', '', 'connected to PlayerIO')
+					
+					// use local development server
+					//client.multiplayer.developmentServer = 'localhost:8184'
+
+					// join a room
+					client.multiplayer.createJoinRoom('mainroom', 'Chat', true, null, { name: username }, function (connection) {
+						global.connection = connection
+						addChatLine('notice', '', 'connected to room')
+						connection.addMessageCallback("*", function (message) {
+							switch (message.type) {
+								case "join": handleJoin(message); break;
+								case "left": handleLeft(message);break;
+								case "msg": handleMsg(message);break;
+							}
+						})
+						connection.addDisconnectCallback(function () {
+							addChatLine('error','', 'disconnected from room')
+					    })
+					}, callbackError)
+				}, callbackError)
+			}
+
+			function callbackError(error) {
+				addChatLine("error",'',"ERROR: " + error.code + ": " + error.message)
+			}
+
+			function handleJoin(message) {
+				var user = {
+					id: message.getInt(0),
+					name: message.getString(1),
+					el: document.createElement('div')
+				}
+				user.el.innerText = message.getString(1)
+				global.users[user.id] = user
+				document.getElementById("users").appendChild(user.el)
+				addChatLine("notice", '', user.name + " joined")
+			}
+
+			function handleLeft(message) {
+				var user = global.users[message.getInt(0)]
+				if (user != null) {
+					user.el.parentNode.removeChild(user.el)
+					delete users[user.id]
+				addChatLine("notice", '', user.name + " left")
+				}
+			}
+
+			function handleMsg(message) {
+				var user = global.users[message.getInt(0)]
+				if (user != null) {
+					addChatLine("message", user.name, message.getString(1))
+				}
+			}
+
+			function addChatLine(className, source, text) {
+				var el = document.createElement('div')
+				el.setAttribute('class', className)
+				el.innerHTML = '<b></b><span></span>'
+				el.getElementsByTagName('b')[0].innerText = source ? source + ': ' : ''
+				el.getElementsByTagName('span')[0].innerText = text
+				var s = document.getElementById("scrollbox")
+				s.appendChild(el)
+				el.scrollIntoView()
+			}
+
+			function handleKeyPress(e) {
+				if (e.keyCode == 13) {
+					var input = document.getElementsByTagName("input")[0]
+					global.connection.send('msg',input.value);
+					input.value = ''
+					e.preventDefault()
+					return false
+				}
+			}
+		</script>
+		<style type="text/css">
+			*{margin:0px;padding:0px;font-size:14px;font-family:Arial, Helvetica, sans-serif;box-sizing:border-box}
+			html, body{width:100%;height:100%;overflow;hidden;}
+			body{padding-left:200px;padding-bottom:50px;}
+			#users{display:none;position:absolute;width:200px;height:100%;padding:10px;top:0px;left:0px;border-right:1px solid #dadada;overflow-y:scroll;overflow-x:hidden;background-color:white}
+			#users div{background-color:#dadada;border-radius:10px;padding:10px;margin-bottom:5px}
+			#input{display:none;position:absolute;width:100%;height:50px;padding:10px 10px 0px 210px;bottom:0px;left:0px;border-top:1px solid #dadada;}
+			#input input{width:100%;height:30px;line-height:100%;border:1px solid #555555;border-radius:10px}
+			#messages{display:none;position:absolute;width:100%;height:100%;top:0px;left:0px;padding:0px 0px 50px 200px;}
+			#messages #scrollbox{overflow:auto;width:100%;height:100%;padding:10px 10px 0px 10px;}
+			#messages .error { padding: 0px 0px 10px 0px; font-weight: bold; color: red; }
+			#messages .notice{padding:0px 0px 10px 0px;font-style:italic;font-size:12px;}
+			#messages .message{padding:0px 0px 10px 0px;}
+			#pickname{position:absolute;top:50%;left:50%;}
+			#pickname span{display:block;width:200px;left:-100px;top:-100px;position:absolute;text-align:center;background-color:#dadada;border-radius:10px;padding:20px;}
+			#pickname h1{font-size:20px;font-weight:bold;}
+			#pickname input{text-align:center;width:100%;margin:10px 0px 10px 0px;font-size:18px;line-height:30px;height:30px}
+			#pickname button{padding:10px}
+		</style>
+	</head>
+	<body>
+		<div id="messages">
+			<div id="scrollbox">
+			</div>
+		</div>
+		<div id="input">
+			<input type="text" onkeypress="handleKeyPress(event)">
+		</div>
+		<div id="users">
+		</div>
+		<div id="pickname">
+			<span>
+				<h1>Pick Name:</h1>
+				<input value="Unnamed" id="namepicker">
+				<button onclick="start()">Go</button>
+			</span>
+		</div>
+	</body>
+</html>
