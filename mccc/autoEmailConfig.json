@@ -5,7 +5,7 @@
   "sendTo":["ricekeller@163.com","miyan@iammiyan.com","gdkilam@gmail.com"],
   "allowedUser":["ricekeller@gmail.com","estelle.zrr@gmail.com","dkilam@hotmail.com"],
   "googleSpreadSheetId":"10CqzZYIgpn7kBxe4oQN0wRdPRwGjUihD--_kdMju5k0",
-  "googleSpreadSheetDataRange":"A3:E54",
-  "googleSpreadSheetColumnCount":5,
+  "googleSpreadSheetDataRange":"A3:H54",
+  "googleSpreadSheetColumnCount":8,
   "googleSPreadSheetColumnIndex":{"date":0,"program":1,"sing":5,"snack":6,"cleanup":7}
 }
