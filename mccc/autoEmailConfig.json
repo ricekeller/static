@@ -7,5 +7,5 @@
   "googleSpreadSheetId":"10CqzZYIgpn7kBxe4oQN0wRdPRwGjUihD--_kdMju5k0",
   "googleSpreadSheetDataRange":"A3:E54",
   "googleSpreadSheetColumnCount":5,
-  "googleSPreadSheetColumnIndex":{"date":0,"program":1,"sing":2,"snack":3,"cleanup":4}
+  "googleSPreadSheetColumnIndex":{"date":0,"program":1,"sing":5,"snack":6,"cleanup":7}
 }
