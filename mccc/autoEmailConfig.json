@@ -4,8 +4,8 @@
   "emailSubject":"[MCCC]周五({{{dinner_date}}})团契晚餐6：30pm",
   "sendTo":["ricekeller@163.com","miyan@iammiyan.com","gdkilam@gmail.com"],
   "allowedUser":["ricekeller@gmail.com","estelle.zrr@gmail.com","dkilam@hotmail.com"],
-  "googleSpreadSheetId":"10CqzZYIgpn7kBxe4oQN0wRdPRwGjUihD--_kdMju5k0",
-  "googleSpreadSheetDataRange":"A3:H54",
-  "googleSpreadSheetColumnCount":8,
-  "googleSPreadSheetColumnIndex":{"date":0,"program":1,"sing":5,"snack":6,"cleanup":7}
+  "googleSpreadSheetId":"1swzs6DsoEmAj_YFY_y0gIPBFycdSZCR1msTzaz51in4",
+  "googleSpreadSheetDataRange":"A4:I56",
+  "googleSpreadSheetColumnCount":9,
+  "googleSPreadSheetColumnIndex":{"date":0,"program":1,"sing":6,"snack":7,"cleanup":8}
 }
